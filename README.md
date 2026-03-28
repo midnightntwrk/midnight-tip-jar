@@ -1,72 +1,62 @@
-# Midnight Template Repository
+# Midnight Tip Jar
 
-This GitHub repository should be used as a template when creating a new Midnight GitHub repository.
-The template is configured with default repository settings and a set of default files that are expected to exist in all Midnight GitHub repositories.
+A minimal tip jar on [Midnight Network](https://midnight.network) — connect a Lace wallet, read balances, and send NIGHT transfers using the DApp Connector API.
 
-### LICENSE
+## Prerequisites
 
-Apache 2.0.
+- **Node.js** v18+
+- **[Lace wallet](https://chromewebstore.google.com/detail/lace/gafhhkghbfjjkeiendhlofajokpaflmk)** installed in Chrome
+- Lace configured for **preprod** with tNight from the [faucet](https://faucet.preprod.midnight.network)
 
-### README.md
+## Quick Start
 
-Provides a brief description for users and developers who want to understand the purpose, setup, and usage of the repository.
+```bash
+npm install
+npm run dev
+```
 
-### SECURITY.md
+Open `http://localhost:5173`, connect your wallet, and send a tip.
 
-Provides a brief description of the Midnight Foundation's security policy and how to properly disclose security issues.
+## Configuration
 
-### CONTRIBUTING.md
+Edit `src/config.ts` and set the recipient address:
 
-Provides guidelines for how people can contribute to the Midnight project.
+```ts
+export const RECIPIENT = 'mn_addr_preprod1...'; // your unshielded address
+```
 
-### CODEOWNERS
+## Tutorial
 
-Defines repository ownership rules.
+Want to build this from scratch? See [TUTORIAL.md](TUTORIAL.md) for a step-by-step guide covering wallet detection, balance reading, and token transfers.
 
-### ISSUE_TEMPLATE
+## Project Structure
 
-Provides templates for reporting various types of issues, such as: bug report, documentation improvement and feature request.
+```
+src/
+├── config.ts     # Network, recipient, UI settings
+├── main.tsx      # Entry point
+├── App.tsx       # Wallet logic and UI
+└── App.css       # Styles
+```
 
-### PULL_REQUEST_TEMPLATE
+## What's Next
 
-Provides a template for a pull request.
+This repo covers the basics — connecting a wallet and transferring tokens. Here are some ideas to extend it:
 
-### CLA Assistant
+- **Name-based tipping with MidNS** — Integrate [Midnames](https://midnames.com) to resolve human-readable names to wallet addresses. A blog or video site embeds `?name=jay.midnight` in the tip button, the app resolves it through MidNS, and the transfer just works. Creators register once — every site can resolve them without hardcoding addresses.
+- **Dynamic recipient via URL** — Read the recipient from a query parameter (`?to=mn_addr_preprod1...`) so a single deployment serves multiple creators without a name service dependency.
+- **Shielded transfers** — Switch from unshielded to shielded transfers for sender privacy. Use `kind: 'shielded'` with a `shield-addr` recipient and `getShieldedBalances()`.
+- **Tip history** — Use `getTxHistory()` from the DApp Connector API to show recent transactions in the UI.
+- **Multi-recipient splitting** — Pass multiple entries in the `makeTransfer` array to split a tip across several addresses in one transaction.
+- **On-chain tip counter** — Deploy a Compact contract that increments a counter each time a tip is sent, giving creators a verifiable on-chain tip count without revealing amounts.
 
-The Midnight Foundation appreciates contributions, and like many other open source projects asks contributors to sign a contributor
-License Agreement before accepting contributions. We use CLA assistant (https://github.com/cla-assistant/cla-assistant) to streamline the CLA
-signing process, enabling contributors to sign our CLAs directly within a GitHub pull request.
+## Related Resources
 
-### Dependabot
+- [React wallet connect how-to](https://docs.midnight.network/how-to/react-wallet-connect) — covers wallet connection (this repo extends it with transfers)
+- [DApp Connector API reference](https://docs.midnight.network/develop/reference/midnight-api/dapp-connector/)
+- [Preprod faucet](https://faucet.preprod.midnight.network)
+- [Midnames](https://midnames.com) — decentralized name service for Midnight
 
-The Midnight Foundation uses GitHub Dependabot feature to keep our projects dependencies up-to-date and address potential security vulnerabilities.
+## License
 
-### Checkmarx
-
-The Midnight Foundation uses Checkmarx for application security (AppSec) to identify and fix security vulnerabilities.
-All repositories are scanned with Checkmarx's suite of tools including: Static Application Security Testing (SAST), Infrastructure as Code (IaC), Software Composition Analysis (SCA), API Security, Container Security and Supply Chain Scans (SCS).
-
-### Unito
-
-Facilitates two-way data synchronization, automated workflows and streamline processes between: Jira, GitHub issues and Github project Kanban board.
-
-# TODO - New Repo Owner
-
-### Software Package Data Exchange (SPDX)
-Include the following Software Package Data Exchange (SPDX) short-form identifier in a comment at the top headers of each source code file.
-
-
- <I>// This file is part of <B>REPLACE WITH REPO-NAME</B>.<BR>
- // Copyright (C) Midnight Foundation<BR>
- // SPDX-License-Identifier: Apache-2.0<BR>
- // Licensed under the Apache License, Version 2.0 (the "License");<BR>
- // You may not use this file except in compliance with the License.<BR>
- // You may obtain a copy of the License at<BR>
- //<BR>
- //	https://www.apache.org/licenses/LICENSE-2.0<BR>
- //<BR>
- // Unless required by applicable law or agreed to in writing, software<BR>
- // distributed under the License is distributed on an "AS IS" BASIS,<BR>
- // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<BR>
- // See the License for the specific language governing permissions and<BR>
- // limitations under the License.</I>
+Apache-2.0
