@@ -4,16 +4,20 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-minor", "version-update:semver-patch"]
-      
+    cooldown:
+      default-days: 7
+
 #  - package-ecosystem: "cargo"
 #    directory: "/"
 #    registries: "*"
 #    schedule:
 #      interval: "daily"
+#    cooldown:
+#      default-days: 7
 #
   - package-ecosystem: "npm"
     directory: "/"
@@ -22,11 +26,15 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-minor", "version-update:semver-patch"]
+     cooldown:
+       default-days: 7
 #
 #  - package-ecosystem: "docker"
 #    directory: "/"
 #    schedule:
 #      interval: "weekly"
+#    cooldown:
+#      default-days: 7
 #
 #registries:
 #   github:
