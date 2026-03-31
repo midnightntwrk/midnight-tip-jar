@@ -26,8 +26,8 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-minor", "version-update:semver-patch"]
-     cooldown:
-       default-days: 7
+    cooldown:
+      default-days: 7
 #
 #  - package-ecosystem: "docker"
 #    directory: "/"
