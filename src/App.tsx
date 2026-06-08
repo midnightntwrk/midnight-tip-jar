@@ -148,8 +148,7 @@ export default function App() {
     }
   }, [wallet, nativeTokenType, amount, refreshBalance]);
 
-  const canSend =
-    wallet && nativeTokenType && !sending && recipientConfigured && parseFloat(amount) >= 1;
+  const canSend = wallet && nativeTokenType && !sending && recipientConfigured && parseFloat(amount) >= 1;
 
   // ── Render ───────────────────────────────────────────────────────────
 
@@ -231,7 +230,8 @@ export default function App() {
                 No NIGHT balance found. Get test tokens from the{' '}
                 <a href="https://faucet.preprod.midnight.network" target="_blank" rel="noopener noreferrer">
                   preprod faucet
-                </a>.
+                </a>
+                .
               </p>
             )}
 
