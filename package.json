@@ -33,7 +33,7 @@
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.60.1",
     "vite": "^6.0.0",
-    "vitest": "^3.2.6"
+    "vitest": "^4.0.0"
   },
   "license": "Apache-2.0"
 }
