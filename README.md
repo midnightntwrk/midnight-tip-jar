@@ -1,3 +1,10 @@
+> [!WARNING]
+> **This repository is archived and no longer maintained.**
+>
+> `midnight-tip-jar` has moved to [midnight-examples](https://github.com/midnightntwrk/midnight-examples), Midnight's example monorepo, where every example compiles and runs against one pinned toolchain in CI. Its successor is [`examples/private-tip-jar`](https://github.com/midnightntwrk/midnight-examples/tree/main/examples/private-tip-jar).
+>
+> This repo is read-only and will not be updated for future SDK releases.
+
 # Midnight Tip Jar
 
 A minimal tip jar on [Midnight Network](https://midnight.network) — connect a Lace wallet, read balances, and send NIGHT transfers using the DApp Connector API.
